@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Facade\FlareClient\Http\Response;
+use App\LogAcesso;
 
 class LogAcessoMiddleware{
     /**
@@ -19,6 +20,10 @@ class LogAcessoMiddleware{
         //return $next($request);
 
         //response - manipular
-        return Response('Chegamos no Middleware e fizalizamos no próprio Middleware');
+
+        dd($request);
+        $ip = $request->server->get('REMOTE_ADDR');
+        //LogAcesso::create(['log' => 'ip requisitou a rota abcd']); 
+        //return Response('Chegamos no Middleware e fizalizamos no próprio Middleware');
     }
 }
